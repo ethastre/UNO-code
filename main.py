@@ -8,31 +8,26 @@ Hand2 = []
 Discard = []
 
 def turn1():
-    print("The Top Of Discard is", Discard)
+    print("The Top Of Discard is", Discard[-1])
     print("Player 1 your hand is", Hand1)
-    print("Your Turn, play a card that matches the discard, if none match type 'none'")
+    print("Type the position of the card starting at zero, if none match type 'none'")
     Position = int(input())
-
+    if Hand1[Position][0] != Discard[0][0] and Hand1[Position][1] != Discard[0][1]:
+        Hand1.append(Deck.pop())
     if Hand1[Position][0] == Discard[0][0] or Hand1[Position][1] == Discard[0][1]:
         Discard.append(Hand1.pop(Position))
-        print(Discard[-1])
-        print(Hand1)
-        if Hand1[Position][0] != Discard[0][0] and Hand1[Position][1] != Discard[0][1]:
-            Hand1.append(Deck.pop())
-            print('Your hand is now', Hand1)
-
-
+    print('Your hand is now', Hand1)
 
 def turn2():
-    print("The Top Of Discard is", Discard)
+    print("The Top Of Discard is", Discard[-1])
     print("Player 2 your hand is", Hand2)
     print("Type the position of the card starting at zero, if none match type 'none'")
     position =int(input())
+    if Hand2[position][0] != Discard[0][0] and Hand2[position][1] != Discard[0][1]:
+        Hand2.append(Deck.pop())
     if Hand2[position][0] == Discard[0][0] or Hand2[position][1] == Discard[0][1]:
         Discard.append(Hand2.pop(position))
-        if Hand2[position][0] != Discard[0][0] and Hand2[position][1] != Discard[0][1]:
-            Hand2.append(Deck.pop())
-            print('Your hand is now', Hand2)
+    print('Your hand is now', Hand2)
 
 for h in range(0,2):
     for color in Colors:
