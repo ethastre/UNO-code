@@ -31,10 +31,10 @@ def turn1():
         if Hand1[position][0] != Discard[-1][0] and Hand1[position][1] != Discard[-1][1]:
             Hand1.append(Deck.pop())
             print('No Match')
-        if Hand1[position][0] == Discard[-1][0] and Hand1[position][1] == "+2":
-            for i in range(0, 2):
-                Hand2.append(Deck.pop())
         if Hand1[position][0] == Discard[-1][0] or Hand1[position][1] == Discard[-1][1]:
+            if Hand1[position][1] == "+2":
+                for i in range(0, 2):
+                    Hand2.append(Deck.pop())
             Discard.append(Hand1.pop(position))
 
 def turn2():
@@ -46,14 +46,15 @@ def turn2():
         if Hand2[position][0] != Discard[-1][0] and Hand2[position][1] != Discard[-1][1]:
             Hand2.append(Deck.pop())
             print('No Match')
-        if Hand2[position][0] == Discard[-1][0] and Hand2[position][1] == "+2":
-            for i in range(0,2):
-                Hand1.append(Deck.pop())
         if Hand2[position][0] == Discard[-1][0] or Hand2[position][1] == Discard[-1][1]:
+            if Hand2[position][1] == "+2":
+                for i in range(0, 2):
+                    Hand1.append(Deck.pop())
             Discard.append(Hand2.pop(position))
 
-
-print(Deck)
+if Discard[0][1] == "+2":
+    for i in range(0,2):
+        Hand1.append(Deck.pop())
 while len(Hand1)>0 and len(Hand2)>0:
     turn1()
     if len(Hand1)==0:
